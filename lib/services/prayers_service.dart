@@ -10,6 +10,8 @@ class PrayersService {
         'Glory be to the Father, and to the Son, and to the Holy Spirit, as it was in the beginning, is now, and ever shall be, world without end. Amen.',
     'Fatima Prayer':
         'O my Jesus, forgive us our sins, save us from the fires of hell, lead all souls to heaven, especially those in most need of Thy mercy.',
+    'Saint Michael Prayer':
+        'Saint Michael the Archangel, defend us in battle, be our protection against the wickeness and snares of the Devil.  May God rebuke him, we humbly pray.  And do thou, O Prince of the Heavenly Host, by the Power of God, thrust into hell Satan and all evil spirits who wander the earth seeking the ruin of souls.  Amen.',
     'Act of Contrition':
         'My God, I am sorry for my sins with all my heart. In choosing to do wrong and failing to do good, I have sinned against you whom I should love above all things. I firmly intend, with your help, to do penance, to sin no more, and to avoid whatever leads me to sin. Our Savior Jesus Christ suffered and died for us. In his name, my God, have mercy.',
     'Rosary Prayer':

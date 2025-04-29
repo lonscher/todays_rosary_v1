@@ -4,6 +4,7 @@ import 'package:todays_rosary/styles/utils.dart';
 class Styles {
   static const String trajanFont = 'Trajan Pro';
   static const String schylerFont = 'Schyler';
+  static const double standardSpace = 4;
 
   // Prayer Text
   static const TextStyle stylePrayer = TextStyle(
