@@ -5,8 +5,10 @@ import 'package:todays_rosary/app/app.locator.dart';
 import 'package:todays_rosary/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:todays_rosary/services/rosary_day_service.dart';
+import 'package:todays_rosary/services/visibility_service.dart';
 
 late final RosaryDay rosaryDay;
+late VisibilityService visibilityService;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

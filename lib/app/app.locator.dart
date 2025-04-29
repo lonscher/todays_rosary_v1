@@ -15,6 +15,7 @@ import '../services/litcal_api_service.dart';
 import '../services/mystery_service.dart';
 import '../services/prayers_service.dart';
 import '../services/rosary_day_service.dart';
+import '../services/visibility_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -34,4 +35,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => LitcalApiService());
   locator.registerLazySingleton(() => RosaryDayService());
   locator.registerLazySingleton(() => PrayersService());
+  locator.registerLazySingleton(() => VisibilityService());
 }

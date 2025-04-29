@@ -6,6 +6,7 @@ import 'package:todays_rosary/services/mystery_service.dart';
 import 'package:todays_rosary/services/litcal_api_service.dart';
 import 'package:todays_rosary/services/rosary_day_service.dart';
 import 'package:todays_rosary/services/prayers_service.dart';
+import 'package:todays_rosary/services/visibility_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -20,6 +21,7 @@ import 'test_helpers.mocks.dart';
     MockSpec<LitcalApiService>(onMissingStub: OnMissingStub.returnDefault),
     MockSpec<RosaryDayService>(onMissingStub: OnMissingStub.returnDefault),
     MockSpec<PrayersService>(onMissingStub: OnMissingStub.returnDefault),
+    MockSpec<VisibilityService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
   ],
 )
@@ -31,6 +33,7 @@ void registerServices() {
   getAndRegisterLitcalApiService();
   getAndRegisterRosaryDayService();
   getAndRegisterPrayersService();
+  getAndRegisterVisibilityService();
 // @stacked-mock-register
 }
 
@@ -113,6 +116,13 @@ MockPrayersService getAndRegisterPrayersService() {
   _removeRegistrationIfExists<PrayersService>();
   final service = MockPrayersService();
   locator.registerSingleton<PrayersService>(service);
+  return service;
+}
+
+MockVisibilityService getAndRegisterVisibilityService() {
+  _removeRegistrationIfExists<VisibilityService>();
+  final service = MockVisibilityService();
+  locator.registerSingleton<VisibilityService>(service);
   return service;
 }
 // @stacked-mock-create

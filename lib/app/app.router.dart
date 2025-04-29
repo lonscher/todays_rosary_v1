@@ -5,12 +5,13 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i6;
+import 'package:flutter/material.dart' as _i7;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i7;
+import 'package:stacked_services/stacked_services.dart' as _i8;
 import 'package:todays_rosary/ui/views/home/home_view.dart' as _i2;
 import 'package:todays_rosary/ui/views/mystery/mystery_view.dart' as _i4;
+import 'package:todays_rosary/ui/views/prayer/prayer_view.dart' as _i6;
 import 'package:todays_rosary/ui/views/rosary/rosary_view.dart' as _i5;
 import 'package:todays_rosary/ui/views/startup/startup_view.dart' as _i3;
 
@@ -23,11 +24,14 @@ class Routes {
 
   static const rosaryView = '/rosary-view';
 
+  static const prayerView = '/prayer-view';
+
   static const all = <String>{
     homeView,
     startupView,
     mysteryView,
     rosaryView,
+    prayerView,
   };
 }
 
@@ -49,24 +53,28 @@ class StackedRouter extends _i1.RouterBase {
       Routes.rosaryView,
       page: _i5.RosaryView,
     ),
+    _i1.RouteDef(
+      Routes.prayerView,
+      page: _i6.PrayerView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.MysteryView: (data) {
       final args = data.getArgs<MysteryViewArguments>(nullOk: false);
-      return _i6.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => _i4.MysteryView(
             key: args.key,
             mysteryIndex: args.mysteryIndex,
@@ -75,8 +83,16 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i5.RosaryView: (data) {
-      return _i6.MaterialPageRoute<dynamic>(
+      return _i7.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.RosaryView(),
+        settings: data,
+      );
+    },
+    _i6.PrayerView: (data) {
+      final args = data.getArgs<PrayerViewArguments>(nullOk: false);
+      return _i7.MaterialPageRoute<dynamic>(
+        builder: (context) =>
+            _i6.PrayerView(key: args.key, prayer: args.prayer),
         settings: data,
       );
     },
@@ -96,7 +112,7 @@ class MysteryViewArguments {
     required this.mysteryString,
   });
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 
   final int mysteryIndex;
 
@@ -121,7 +137,34 @@ class MysteryViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i7.NavigationService {
+class PrayerViewArguments {
+  const PrayerViewArguments({
+    this.key,
+    required this.prayer,
+  });
+
+  final _i7.Key? key;
+
+  final String prayer;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "prayer": "$prayer"}';
+  }
+
+  @override
+  bool operator ==(covariant PrayerViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.prayer == prayer;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ prayer.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i8.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -151,7 +194,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> navigateToMysteryView({
-    _i6.Key? key,
+    _i7.Key? key,
     required int mysteryIndex,
     required int mysteryString,
     int? routerId,
@@ -177,6 +220,23 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.rosaryView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToPrayerView({
+    _i7.Key? key,
+    required String prayer,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.prayerView,
+        arguments: PrayerViewArguments(key: key, prayer: prayer),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -212,7 +272,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> replaceWithMysteryView({
-    _i6.Key? key,
+    _i7.Key? key,
     required int mysteryIndex,
     required int mysteryString,
     int? routerId,
@@ -238,6 +298,23 @@ extension NavigatorStateExtension on _i7.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.rosaryView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithPrayerView({
+    _i7.Key? key,
+    required String prayer,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.prayerView,
+        arguments: PrayerViewArguments(key: key, prayer: prayer),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

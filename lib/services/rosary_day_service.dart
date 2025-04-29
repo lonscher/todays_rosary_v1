@@ -5,7 +5,7 @@ class RosaryDayService {
   Future<RosaryDay> getRosaryDay() async {
     String mysteries;
 
-    final now = DateTime.now().subtract(const Duration(days: -50));
+    final now = DateTime.now().subtract(const Duration(days: 0));
     final int year = int.parse(DateFormat('yyyy').format(now));
     final int month = int.parse(DateFormat('M').format(now));
     final int day = int.parse(DateFormat('d').format(now));

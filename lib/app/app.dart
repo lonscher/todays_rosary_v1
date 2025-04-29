@@ -10,6 +10,8 @@ import 'package:todays_rosary/services/litcal_api_service.dart';
 import 'package:todays_rosary/services/rosary_day_service.dart';
 import 'package:todays_rosary/services/prayers_service.dart';
 import 'package:todays_rosary/ui/views/rosary/rosary_view.dart';
+import 'package:todays_rosary/ui/views/prayer/prayer_view.dart';
+import 'package:todays_rosary/services/visibility_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -18,6 +20,7 @@ import 'package:todays_rosary/ui/views/rosary/rosary_view.dart';
     MaterialRoute(page: StartupView),
     MaterialRoute(page: MysteryView),
     MaterialRoute(page: RosaryView),
+    MaterialRoute(page: PrayerView),
 // @stacked-route
   ],
   dependencies: [
@@ -28,6 +31,7 @@ import 'package:todays_rosary/ui/views/rosary/rosary_view.dart';
     LazySingleton(classType: LitcalApiService),
     LazySingleton(classType: RosaryDayService),
     LazySingleton(classType: PrayersService),
+    LazySingleton(classType: VisibilityService),
 // @stacked-service
   ],
   bottomsheets: [

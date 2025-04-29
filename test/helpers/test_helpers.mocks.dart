@@ -15,6 +15,7 @@ import 'package:todays_rosary/services/litcal_api_service.dart' as _i10;
 import 'package:todays_rosary/services/mystery_service.dart' as _i9;
 import 'package:todays_rosary/services/prayers_service.dart' as _i11;
 import 'package:todays_rosary/services/rosary_day_service.dart' as _i3;
+import 'package:todays_rosary/services/visibility_service.dart' as _i12;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -846,3 +847,9 @@ class MockPrayersService extends _i1.Mock implements _i11.PrayersService {
         ),
       ) as String);
 }
+
+/// A class which mocks [VisibilityService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockVisibilityService extends _i1.Mock
+    implements _i12.VisibilityService {}
